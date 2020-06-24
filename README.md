@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-
+We care about isolating unit tests, so there's a very simple mocking library.
 
 ```ruby
 # source code
@@ -41,29 +41,35 @@ describe 'The Animal' do
     animal = Animal.new
     expect(animal.roar).to eq "little roar!"
   end
+end
 
-  describe 'stubbing' do
-    it 'we can mock too!' do
-      mock = test_double
-      allow(mock).to receive(:speak) { 'Hello!' }
-      expect(mock.speak).to eq 'Hello!'
-    end
+describe 'stubbing' do
+  it 'we can mock too!' do
+    mock = test_double
+    allow(mock).to receive(:speak) { 'Hello!' }
+    expect(mock.speak).to eq 'Hello!'
   end
 end
 ```
 
-It's got simple indentation and simple colour coding for test passes and failures. Failures will give you only the spec file path and line number.
-
-Remember - you'll have to manage test setup and cleanup yourself.
+To run your specs, pass the spec file directly as an argument. You have to run individual spec files.
 
 ```sh
+$ mspec ./spec/animal_spec.rb
+```
+
+```
 The Animal
   returns a string
   fails nicely
-  /path/to/directory/app/spec/animal_spec.rb:11:in `block (2 levels) in <top (required)>'
+  /path/to/directory/app/spec/animal_spec.rb:11:in block (2 levels) in <top (required)>'
 stubbing
   we can mock too!
 ```
+
+It's got simple one-level indentation and simple colour coding for test passes and failures. Failures will give you only the spec file path and line number.
+
+Remember - you'll have to manage test setup and test cleanup yourself, while keeping your test code dry also yourself. Make sure each test runs in isolation.
 
 ## Development
 

@@ -1,13 +1,13 @@
 # Mspec
 
-The lightest-weight spec framework in ruby
+The lightest-weight spec framework in ruby. Built for learning at [Makers](https://makers.tech).
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'mspec'
+gem 'm-spec'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install mspec
+    $ gem install m-spec
 
 ## Usage
 
@@ -55,7 +55,7 @@ end
 To run your specs, pass the spec file directly as an argument. You have to run individual spec files.
 
 ```sh
-$ mspec ./spec/animal_spec.rb
+$ m-spec ./spec/animal_spec.rb
 ```
 
 ```
@@ -79,7 +79,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/dearshrewdwit/mspec. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/dearshrewdwit/m-spec. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -87,4 +87,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Mspec project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/dearshrewdwit/mspec/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Mspec project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/dearshrewdwit/m-spec/blob/master/CODE_OF_CONDUCT.md).

@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'mspec'
+
+# run the tests
+puts 'Mspec::Expect.new(5).to Mspec::Matchers::Equal.new(5)'
+puts Mspec::Expect.new(5).to Mspec::Matchers::Equal.new(5)

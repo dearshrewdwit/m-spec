@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
-
+require 'pry'
 require 'mspec'
 
-# run the tests
-puts 'Mspec::Expect.new(5).to Mspec::Matchers::Equal.new(5)'
-puts Mspec::Expect.new(5).to Mspec::Matchers::Equal.new(5)
+spec_file = ARGV[0]
+
+require spec_file

@@ -1,3 +1,5 @@
+binding.pry
+
 module Mspec
   class Expect
     def initialize(value)
@@ -5,7 +7,13 @@ module Mspec
     end
 
     def to(matcher)
-      matcher.check(@value)
+      begin
+        raise SpecError.new unless matcher.check(@value)
+      rescue SpecError => e
+        data = e
+      end
+
+      SpecResult.new(data)
     end
   end
 end

@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Edward Withers"]
   spec.email         = ["dearshrewdwit@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{The lightest-weight testing framework in Ruby}
+  spec.description   = %q{A testing framework designed both for beginners to reduce the complexity and for experts who want a barebones framework.}
+  # spec.homepage      = "it's not built yet.."
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

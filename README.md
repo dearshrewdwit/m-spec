@@ -1,6 +1,6 @@
 # Mspec
 
-The lightest-weight testing framework in ruby
+The lightest-weight spec framework in ruby
 
 ## Installation
 
@@ -20,7 +20,35 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Remember - you'll have to manage test setup and cleanup yourself.
+
+```ruby
+class Animal
+  def roar
+    "ROAAAARRRR!"
+  end
+end
+
+describe 'The Animal' do
+  it 'can roar' do
+    animal = Animal.new
+    expect(animal.roar).to eq "ROAAAARRRR!"
+  end
+
+  it 'gives a lovely red when it fails' do
+    animal = Animal.new
+    expect(animal.roar).to eq "little roar!"
+  end
+
+  describe 'stubbing' do
+    it 'we can mock too!' do
+      mock = test_double
+      allow(mock).to receive(:speak) { 'Hello!' }
+      expect(mock.speak).to eq 'Hello!'
+    end
+  end
+end
+```
 
 ## Development
 

@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
-require 'pry'
-require 'mspec'
+require 'm-spec'
 
 spec_file = ARGV[0]
 require spec_file

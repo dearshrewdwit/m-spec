@@ -1,16 +1,16 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "mspec/version"
+require "m-spec/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "mspec"
+  spec.name          = "m-spec"
   spec.version       = Mspec::VERSION
   spec.authors       = ["Edward Withers"]
   spec.email         = ["dearshrewdwit@gmail.com"]
 
   spec.summary       = %q{The lightest-weight testing framework in Ruby}
   spec.description   = %q{A testing framework designed both for beginners to reduce the complexity and for experts who want a barebones framework.}
-  spec.homepage      = "https://github.com/dearshrewdwit/mspec"
+  spec.homepage      = "https://github.com/dearshrewdwit/m-spec"
   spec.license       = "MIT"
 
   # Specify which files should be added to the gem when it is released.

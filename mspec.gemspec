@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{The lightest-weight testing framework in Ruby}
   spec.description   = %q{A testing framework designed both for beginners to reduce the complexity and for experts who want a barebones framework.}
-  # spec.homepage      = "it's not built yet.."
+  spec.homepage      = "https://github.com/dearshrewdwit/mspec"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

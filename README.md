@@ -20,15 +20,17 @@ Or install it yourself as:
 
 ## Usage
 
-Remember - you'll have to manage test setup and cleanup yourself.
+
 
 ```ruby
+# source code
 class Animal
   def roar
     "ROAAAARRRR!"
   end
 end
 
+# test code
 describe 'The Animal' do
   it 'can roar' do
     animal = Animal.new
@@ -50,6 +52,19 @@ describe 'The Animal' do
 end
 ```
 
+It's got simple indentation and simple colour coding for test passes and failures. Failures will give you only the spec file path and line number.
+
+Remember - you'll have to manage test setup and cleanup yourself.
+
+```sh
+The Animal
+  returns a string
+  fails nicely
+  /path/to/directory/app/spec/animal_spec.rb:11:in `block (2 levels) in <top (required)>'
+stubbing
+  we can mock too!
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -58,7 +73,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mspec. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/dearshrewdwit/mspec. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -66,4 +81,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Mspec project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/mspec/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Mspec project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/dearshrewdwit/mspec/blob/master/CODE_OF_CONDUCT.md).

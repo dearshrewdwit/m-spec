@@ -1,5 +1,3 @@
-binding.pry
-
 module Mspec
   class Expect
     def initialize(value)

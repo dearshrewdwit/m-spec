@@ -3,5 +3,4 @@ require 'pry'
 require 'mspec'
 
 spec_file = ARGV[0]
-
 require spec_file

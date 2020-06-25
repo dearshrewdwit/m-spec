@@ -1,6 +1,7 @@
 COLOUR_CODES = {
-  true => 32,
-  false => 31
+  green: 32,
+  red: 31,
+  light_blue: 36
 }
 
 def describe(str)
@@ -10,15 +11,16 @@ end
 
 def it(str)
   spec_result = yield
-  colour_code = COLOUR_CODES[spec_result.success?]
-  puts "  \e[#{colour_code}m#{str}\e[0m"
-  unless spec_result.success?
+  if spec_result.success?
+    puts "  \e[#{COLOUR_CODES[:green]}m#{str}\e[0m"
+  else
+    puts "  \e[#{COLOUR_CODES[:red]}m#{str}\e[0m"
     spec_result.failure_message.each do |line|
-      puts "  \e[#{colour_code}m#{line}\e[0m"
+      puts "    \e[#{COLOUR_CODES[:red]}m#{line}\e[0m"
     end
+    puts "    \e[#{COLOUR_CODES[:light_blue]}m# #{spec_result.trace}\e[0m"
   end
 end
-
 
 def expect(obj)
   Mspec::Expect.new(obj)

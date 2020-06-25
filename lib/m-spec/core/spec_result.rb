@@ -12,10 +12,13 @@ module Mspec
 
     def failure_message
       [
-        "  Expected: #{@expectation.value}",
-        "  Got: #{@matcher.value}",
-        "  #{@error.backtrace[1]}"
+        "Expected: #{@expectation.value}",
+        "Got: #{@matcher.value}",
       ]
+    end
+
+    def trace
+      "#{@error.backtrace[1]}"
     end
   end
 end

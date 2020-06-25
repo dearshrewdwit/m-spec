@@ -1,6 +1,8 @@
 module Mspec
   class SpecResult
-    def initialize(error)
+    def initialize(expectation, matcher, error)
+      @expectation = expectation
+      @matcher = matcher
       @error = error
     end
 
@@ -8,8 +10,12 @@ module Mspec
       !@error
     end
 
-    def simple_stack_trace
-      [@error.backtrace[1]]
+    def failure_message
+      [
+        "  Expected: #{@expectation.value}",
+        "  Got: #{@matcher.value}",
+        "  #{@error.backtrace[1]}"
+      ]
     end
   end
 end

@@ -1,5 +1,7 @@
 module Mspec
   class Expect
+    attr_reader :value
+
     def initialize(value)
       @value = value
     end
@@ -11,7 +13,7 @@ module Mspec
         data = e
       end
 
-      SpecResult.new(data)
+      SpecResult.new(self, matcher, data)
     end
   end
 end

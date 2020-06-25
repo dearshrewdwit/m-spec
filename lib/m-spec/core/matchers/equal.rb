@@ -1,6 +1,8 @@
 module Mspec
   module Matchers
     class Equal
+      attr_reader :value
+
       def initialize(value)
         @value = value
       end

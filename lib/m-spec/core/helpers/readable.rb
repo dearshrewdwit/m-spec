@@ -13,8 +13,8 @@ def it(str)
   colour_code = COLOUR_CODES[spec_result.success?]
   puts "  \e[#{colour_code}m#{str}\e[0m"
   unless spec_result.success?
-    spec_result.simple_stack_trace.each do |stackline|
-      puts "  \e[#{colour_code}m#{stackline}\e[0m"
+    spec_result.failure_message.each do |line|
+      puts "  \e[#{colour_code}m#{line}\e[0m"
     end
   end
 end

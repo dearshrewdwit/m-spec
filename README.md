@@ -1,6 +1,6 @@
 # Mspec
 
-The lightest-weight spec framework in ruby. Built for learning at [Makers](https://makers.tech).
+The lightest-weight spec framework in ruby. Built for learning at [Makers](https://makers.tech). You have one matcher, the comparison matcher, and test setup and teardown is your responsibility. For additional features, you must extend the gem.
 
 ## Installation
 
@@ -69,7 +69,7 @@ stubbing
 
 It's got simple one-level indentation and simple colour coding for test passes and failures. Failures will give you only the spec file path and line number.
 
-Remember - you'll have to manage test setup and test cleanup yourself, while keeping your test code dry also yourself. Make sure each test runs in isolation.
+Remember - you'll have to manage test setup and teardown yourself and keeping your test code dry yourself. Make sure each test runs in isolation.
 
 ## Extending
 

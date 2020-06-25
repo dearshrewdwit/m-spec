@@ -12,8 +12,8 @@ module Mspec
 
     def failure_message
       [
-        "Expected: #{@expectation.value}",
-        "Got: #{@matcher.value}",
+        "Expected: #{@matcher.value}",
+        "Got: #{@expectation.value}",
       ]
     end
 

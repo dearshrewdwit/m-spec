@@ -64,14 +64,14 @@ The Animal
   fails nicely
     Expected: ROAAAARRRR!
     Got: little roar!
-    /path/to/directory/spec/animal_spec.rb:11:in `block (2 levels) in <top (required)>'
+    # /path/to/directory/spec/animal_spec.rb:11:in `block (2 levels) in <top (required)>'
 stubbing
   we can mock too!
 ```
 
 It's got simple one-level indentation, simple colour coding for test passes and failures, and simple failure messages with expected and actual values and the failing spec file path and line number.
 
-Remember - you'll have to manage test setup and teardown yourself and keeping your test code dry yourself. Make sure each test runs in isolation.
+Remember - you'll have to manage yourself: test setup and teardown, keeping test code dry, each test running in isolation, and loading source code properly.
 
 ## Extending
 
@@ -88,7 +88,7 @@ m-spec [spec-file]
 ```
 
 ## Pushing to Rubygems
-Sign up for an account, check for the gem name you want, and then follow the hints and errors when you
+Sign up for an account, check for the gem name you want, change the gem metadata to represent what you want, and then follow the hints and errors when you
 ```sh
 $ bundle exec rake release
 ```

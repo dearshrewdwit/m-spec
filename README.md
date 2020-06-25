@@ -71,11 +71,27 @@ It's got simple one-level indentation and simple colour coding for test passes a
 
 Remember - you'll have to manage test setup and test cleanup yourself, while keeping your test code dry also yourself. Make sure each test runs in isolation.
 
-## Development
+## Extending
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo
+```sh
+$ git clone git@github.com:dearshrewdwit/m-spec.git
+$ cd m-spec
+```
+Add more matchers, or extend the mocking library. Then build locally and use.
+```sh
+bundle exec rake build --trace
+gem install pkg/m-spec-[version].gem
+m-spec [spec-file]
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+## Pushing to Rubygems
+Sign up for an account, check for the gem name you want, and then follow the hints and errors when you
+```sh
+$ bundle exec rake release
+```
+
+[Bundler docs](https://bundler.io/guides/creating_gem.html) are a good resource, as are the [rubygems docs](https://guides.rubygems.org/publishing/)
 
 ## Contributing
 

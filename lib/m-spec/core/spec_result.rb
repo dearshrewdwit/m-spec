@@ -1,8 +1,8 @@
 module Mspec
   class SpecResult
     def initialize(expectation, matcher, error)
-      @expectation = expectation
-      @matcher = matcher
+      @test_code = expectation
+      @expected_result = matcher
       @error = error
     end
 
@@ -12,13 +12,23 @@ module Mspec
 
     def failure_message
       [
-        "Expected: #{@matcher.value}",
-        "Got: #{@expectation.value}",
+        "Expected: #{@expected_result.value.inspect}",
+        "Got: #{test_code_result.inspect}",
       ]
     end
 
     def trace
       "#{@error.backtrace[1]}"
+    end
+
+    private
+
+    def test_code_result
+      if @test_code.value.is_a?(Proc)
+        @expected_result.test_code_output_string
+      else
+        @test_code.value
+      end
     end
   end
 end

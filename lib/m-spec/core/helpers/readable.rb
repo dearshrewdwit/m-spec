@@ -22,8 +22,16 @@ def it(str)
   end
 end
 
-def expect(obj)
-  Mspec::Expect.new(obj)
+def expect(obj=nil, &block)
+  if obj
+    Mspec::Expect.new(obj)
+  else
+    Mspec::Expect.new(block)
+  end
+end
+
+def output(string)
+  Mspec::Matchers::Output.new(string)
 end
 
 def eq(obj)

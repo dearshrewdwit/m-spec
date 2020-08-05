@@ -73,6 +73,17 @@ It's got simple one-level indentation, simple colour coding for test passes and 
 
 Remember - you'll have to manage yourself: test setup and teardown, keeping test code dry, each test running in isolation, and loading source code properly.
 
+## Rubocop
+
+M-spec comes with rubocop by default, using this [set of rules](https://github.com/makersacademy/scaffolint). To configure your test suite to disable rubocop or to only run rubcop, add an optional configuration file named `.m-spec` to your project root where you run your specs from. You don't need the configuration file - by default your specs will run first, followed by rubocop.
+
+You can add either of two options
+- `--no-rubocop` which will ignore running rubocop
+- `--only-rubocop` which will ignore running your tests
+
+See [rubocop documentation](https://docs.rubocop.org/rubocop/index.html) for more info - you might be interested in reading about rubocop's autocorrect command.
+
+
 ## Extending
 
 After checking out the repo

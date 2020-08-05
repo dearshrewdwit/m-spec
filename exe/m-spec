@@ -1,5 +1,29 @@
 #!/usr/bin/env ruby
 require 'm-spec'
 
-spec_file = ARGV[0]
-require spec_file
+def run_rubocop!
+  config = "$GEM_HOME/gems/m-spec-#{Mspec::VERSION}/.rubocop.yml"
+  system("bundle exec rubocop --config #{config}")
+end
+
+def run_specs!
+  spec_file = ARGV[0]
+  require spec_file
+end
+
+if File.exists?('./.m-spec')
+  File.open('./.m-spec', 'r') do |file|
+    options = file.read.split
+    if options.include?('--only-rubocop')
+      run_rubocop!
+    elsif options.include?('--no-rubocop')
+      run_specs!
+    else
+      run_specs!
+      run_rubocop!
+    end
+  end
+else
+  run_specs!
+  run_rubocop!
+end

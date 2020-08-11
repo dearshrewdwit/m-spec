@@ -1,6 +1,6 @@
 # Mspec
 
-The lightest-weight spec framework in ruby. Built for learning at [Makers](https://makers.tech). You have one matcher, the comparison matcher, and test setup and teardown is your responsibility. For additional features, you must extend the gem.
+The lightest-weight spec framework in ruby. Built for learning at [Makers](https://makers.tech). You have two matchers, an equality matcher and an output matcher, and test setup and teardown is your responsibility. For additional features, you must extend the gem.
 
 ## Installation
 
@@ -43,19 +43,32 @@ describe 'The Animal' do
   end
 end
 
-describe 'stubbing' do
-  it 'we can mock too!' do
+describe 'test doubles' do
+  it 'can be stubbed' do
     mock = test_double
     allow(mock).to receive(:speak) { 'Hello!' }
     expect(mock.speak).to eq 'Hello!'
   end
+  it 'can have optional names' do
+    mock = test_double('a name')
+    allow(mock).to receive(:speak) { 'Hello!' }
+    expect(mock.speak).to eq 'Hello!'
+  end
+end
+
+describe 'testing output' do
+  it 'captures strings' do
+    expect { puts('hello') }.to output("hello\n")
+  end
 end
 ```
 
-To run your specs, pass the spec file directly as an argument. You have to run individual spec files.
+To run your specs, pass the spec file directly as an argument. You have to run individual spec files, or create a file that requires your specs.
 
 ```sh
 $ m-spec ./spec/animal_spec.rb
+# or
+$ m-spec ./spec_runner.rb
 ```
 
 ```
@@ -67,6 +80,11 @@ The Animal
     # /path/to/directory/spec/animal_spec.rb:11:in `block (2 levels) in <top (required)>'
 stubbing
   we can mock too!
+
+Inspecting 3 files
+...
+
+3 files inspected, no offenses detected
 ```
 
 It's got simple one-level indentation, simple colour coding for test passes and failures, and simple failure messages with expected and actual values and the failing spec file path and line number.

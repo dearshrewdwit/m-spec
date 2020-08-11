@@ -23,7 +23,7 @@ def it(str)
 end
 
 def expect(obj=nil, &block)
-  if obj
+  if !obj.nil?
     Mspec::Expect.new(obj)
   else
     Mspec::Expect.new(block)

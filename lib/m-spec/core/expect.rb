@@ -13,7 +13,7 @@ module Mspec
         data = e
       end
 
-      SpecExample.new(self, matcher, data)
+      SpecResult.new(self, matcher, data)
     end
   end
 end

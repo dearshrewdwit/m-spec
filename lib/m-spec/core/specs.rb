@@ -27,8 +27,8 @@ module Mspec
       failures = @data.select(&:failure?)
 
       puts "#{failures.length} failures"
-      failures.each_with_index do |(desc,result), index|
-        puts "     \e[#{COLOUR_CODES[:red]}m#{index+1}. #{result.trace}\e[0m"
+      failures.each_with_index do |spec, index|
+        puts "     \e[#{COLOUR_CODES[:red]}m#{index+1}. #{spec.trace}\e[0m"
       end
     end
   end

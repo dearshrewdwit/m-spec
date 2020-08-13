@@ -16,11 +16,11 @@ def it(str, specs = Mspec::Specs.instance)
   if spec_example.success?
     puts "  \e[#{COLOUR_CODES[:green]}m#{str}\e[0m"
   else
-    puts "  \e[#{COLOUR_CODES[:red]}m#{str}\e[0m"
+    puts "  \e[#{COLOUR_CODES[:red]}m#{str}\n\e[0m"
     spec_example.failure_message.each do |line|
       puts "    \e[#{COLOUR_CODES[:red]}m#{line}\e[0m"
     end
-    puts "    \e[#{COLOUR_CODES[:light_blue]}m# #{spec_example.trace}\e[0m"
+    puts "\n    \e[#{COLOUR_CODES[:light_blue]}m# #{spec_example.trace}\e[0m"
   end
 end
 

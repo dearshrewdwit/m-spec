@@ -12,8 +12,8 @@ module Mspec
 
     def failure_message
       [
-        "Expected: ".rjust(9) + "#{@expected_result.value.inspect}",
-        "Got: ".rjust(9) + "#{test_code_result.inspect}",
+        "Expected: ".rjust(10) + "#{@expected_result.value.inspect}",
+        "Got: ".rjust(10) + "#{test_code_result.inspect}",
       ]
     end
 

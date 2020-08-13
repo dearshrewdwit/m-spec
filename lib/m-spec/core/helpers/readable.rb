@@ -9,16 +9,18 @@ def describe(str)
   yield
 end
 
-def it(str)
-  spec_result = yield
-  if spec_result.success?
+def it(str, specs = Mspec::Specs.instance)
+  spec_example = Mspec::Example.new(str, yield)
+  specs.add(spec_example)
+  
+  if spec_example.success?
     puts "  \e[#{COLOUR_CODES[:green]}m#{str}\e[0m"
   else
     puts "  \e[#{COLOUR_CODES[:red]}m#{str}\e[0m"
-    spec_result.failure_message.each do |line|
+    spec_example.failure_message.each do |line|
       puts "    \e[#{COLOUR_CODES[:red]}m#{line}\e[0m"
     end
-    puts "    \e[#{COLOUR_CODES[:light_blue]}m# #{spec_result.trace}\e[0m"
+    puts "    \e[#{COLOUR_CODES[:light_blue]}m# #{spec_example.trace}\e[0m"
   end
 end
 

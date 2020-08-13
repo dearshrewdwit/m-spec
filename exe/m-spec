@@ -2,16 +2,33 @@
 require 'm-spec'
 
 def run_rubocop!
-  config = "$GEM_HOME/gems/m-spec-#{Mspec::VERSION}/.rubocop.yml"
-  system("bundle exec rubocop --config #{config}")
+  # needs default
+  if File.exists?('.rubocop.yml')
+    puts "\n---Readability Tests---\n\n"
+    system("bundle exec rubocop")
+  else
+    puts "ERROR: No '.rubocop.yml' found, please create one at your project root or re-initialize m-spec with `m-spec --init`"
+  end
 end
 
 def run_specs!
   spec_file = ARGV[0]
-  require spec_file
+  Mspec::Specs.new(spec_file).run!
 end
 
-if File.exists?('./.m-spec')
+if ARGV[0] == '--init'
+  contents = File.read("#{ENV['GEM_HOME']}/gems/m-spec-#{Mspec::VERSION}/.rubocop.yml")
+  File.open('.rubocop.yml', 'w') do |file|
+    file.write(contents)
+  end
+  puts 'created: .rubocop.yml'
+
+  contents = "# This has been auto-generated. Feel free to delete these comments.\n#\n# Try adding options below: '--no-rubocop' or '--only-rubocop' without the quotes."
+  File.open('.m-spec', 'w') do |file|
+    file.write(contents)
+  end
+  puts 'created: .m-spec'
+elsif File.exists?('./.m-spec')
   File.open('./.m-spec', 'r') do |file|
     options = file.read.split
     if options.include?('--only-rubocop')

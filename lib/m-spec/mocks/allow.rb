@@ -6,7 +6,7 @@ module Mspec
       end
 
       def to(stub)
-        @obj.define_singleton_method(stub.name) { stub.return_value }
+        @obj.define_singleton_method(stub.name) { |*| stub.return_value }
       end
     end
   end

@@ -18,6 +18,14 @@ Or install it yourself as:
 
     $ gem install m-spec
 
+## Setup
+
+Initialize m-spec with a `.m-spec` and a `.rubocop.yml` file
+```sh
+m-spec --init
+```
+
+
 ## Usage
 
 We care about isolating unit tests, so there's a very simple mocking library.
@@ -53,6 +61,12 @@ describe 'test doubles' do
     mock = test_double('a name')
     allow(mock).to receive(:speak) { 'Hello!' }
     expect(mock.speak).to eq 'Hello!'
+  end
+
+  it 'can be sent messages with any args' do
+    mock = test_double('a name')
+    allow(mock).to receive(:speak) { 'Hello!' }
+    expect(mock.speak('example arg')).to eq 'Hello!'
   end
 end
 

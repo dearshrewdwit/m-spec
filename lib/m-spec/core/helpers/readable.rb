@@ -12,7 +12,6 @@ end
 def it(str, specs = Mspec::Specs.instance)
   spec_example = Mspec::SpecExample.new(str, yield)
   specs.add(spec_example)
-
   if spec_example.success?
     puts "  \e[#{COLOUR_CODES[:green]}m#{str}\e[0m"
   else
@@ -24,7 +23,7 @@ def it(str, specs = Mspec::Specs.instance)
   end
 end
 
-def expect(obj=nil, &block)
+def expect(obj = nil, &block)
   if !obj.nil?
     Mspec::Expect.new(obj)
   else

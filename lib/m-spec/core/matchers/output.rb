@@ -20,7 +20,7 @@ module Mspec
 
       private
 
-      def mock_output(output=StringIO.new, &block)
+      def mock_output(output = StringIO.new, &block)
         $stdout = output
         block.call
         $stdout = STDOUT

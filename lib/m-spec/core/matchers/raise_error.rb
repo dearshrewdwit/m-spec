@@ -2,7 +2,7 @@ require 'stringio'
 
 module Mspec
   module Matchers
-    class Output
+    class RaiseError
       attr_reader :value, :actual
 
       def initialize(value)
@@ -10,21 +10,21 @@ module Mspec
       end
 
       def check(block)
-        output = mock_output do
+        @actual = catch_error do
           block.call
         end
-        @actual = output.string
 
         @value == @actual
       end
 
       private
 
-      def mock_output(output = StringIO.new, &block)
-        $stdout = output
-        block.call
-        $stdout = STDOUT
-        output
+      def catch_error(&block)
+        begin
+          block.call
+        rescue StandardError => e
+          e.class
+        end
       end
     end
   end

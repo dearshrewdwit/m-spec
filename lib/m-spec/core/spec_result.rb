@@ -25,7 +25,7 @@ module Mspec
 
     def test_code_result
       if @test_code.value.is_a?(Proc)
-        @expected_result.test_code_output_string
+        @expected_result.actual
       else
         @test_code.value
       end

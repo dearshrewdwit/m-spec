@@ -1,6 +1,6 @@
 # Mspec
 
-The lightest-weight spec framework in ruby. Built for learning at [Makers](https://makers.tech). You have two matchers, an equality matcher and an output matcher, and test setup and teardown is your responsibility. For additional features, you must extend the gem.
+The lightest-weight spec framework in ruby. Built for learning at [Makers](https://makers.tech). You have three matchers, an equality matcher, an output matcher and an error matcher. Test setup and teardown is your responsibility. For additional features, you must extend the gem.
 
 ## Installation
 

@@ -9,6 +9,8 @@ require "m-spec/core/spec_example"
 require "m-spec/core/specs"
 require "m-spec/core/matchers/equal"
 require "m-spec/core/matchers/output"
+require "m-spec/core/matchers/raise_error"
+
 require "m-spec/core/helpers/readable"
 
 require "m-spec/mocks/allow"

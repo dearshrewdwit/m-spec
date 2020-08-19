@@ -38,3 +38,7 @@ end
 def eq(obj)
   Mspec::Matchers::Equal.new(obj)
 end
+
+def raise_error(error_class)
+  Mspec::Matchers::RaiseError.new(error_class)
+end

@@ -28,8 +28,25 @@ m-spec --init
 
 ## Usage
 
-We care about isolating unit tests, so there's a very simple mocking library.
+To run your specs, pass the spec file directly as an argument. You have to run individual spec files, or create a file that requires your specs.
 
+```sh
+$ m-spec ./spec/animal_spec.rb
+# or
+$ m-spec ./spec_runner.rb
+```
+
+Test suite produces a summary with itemised failures.
+```
+---Summary---
+
+3 examples found
+1 failures
+     1. /Users/edwardwithers/projects/m-spec/spec/mocks/feature_specs.rb:16:in `block (2 levels) in <top (required)>'
+
+```
+
+#### Simple test layout
 ```ruby
 # source code
 class Animal
@@ -50,13 +67,35 @@ describe 'The Animal' do
     expect(animal.roar).to eq "little roar!"
   end
 end
+```
+Test output:
+```
+The Animal
+  returns a string
+  fails nicely
 
+    Expected: ROAAAARRRR!
+         Got: little roar!
+
+    # /path/to/directory/spec/animal_spec.rb:11:in `block (2 levels) in <top (required)>'
+```
+
+
+#### Mocks & stubs
+We care about isolating unit tests, so there's a very simple mocking library.
+```ruby
 describe 'test doubles' do
   it 'can be stubbed' do
     mock = test_double
     allow(mock).to receive(:speak) { 'Hello!' }
     expect(mock.speak).to eq 'Hello!'
   end
+
+  it 'causes NoMethodError when not accurately stubbed' do
+    mock = test_double
+    expect(mock.speak).to eq 'Hello!'
+  end
+
   it 'can have optional names' do
     mock = test_double('a name')
     allow(mock).to receive(:speak) { 'Hello!' }
@@ -69,36 +108,37 @@ describe 'test doubles' do
     expect(mock.speak('example arg')).to eq 'Hello!'
   end
 end
+```
 
+#### Output
+Temporarily replaces `$stdout` during the execution of the test using `StringIO`.
+
+```ruby
 describe 'testing output' do
   it 'captures strings' do
     expect { puts('hello') }.to output("hello\n")
   end
 end
-```
-
-To run your specs, pass the spec file directly as an argument. You have to run individual spec files, or create a file that requires your specs.
-
-```sh
-$ m-spec ./spec/animal_spec.rb
-# or
-$ m-spec ./spec_runner.rb
-```
 
 ```
-The Animal
-  returns a string
-  fails nicely
-    Expected: ROAAAARRRR!
-    Got: little roar!
-    # /path/to/directory/spec/animal_spec.rb:11:in `block (2 levels) in <top (required)>'
-stubbing
-  we can mock too!
 
-Inspecting 3 files
-...
+#### Raising Errors
+Catches only StandardError or subclasses of StandardError.
 
-3 files inspected, no offenses detected
+```ruby
+describe 'Testing Raising errors' do
+  it 'captures error type' do
+    expect { raise StandardError }.to raise_error(StandardError)
+  end
+
+  it 'raising different error gives normal failure message' do
+    expect { raise ArgumentError }.to raise_error(StandardError)
+  end
+
+  it 'not raising error gives normal failure message' do
+    expect { 'hello' }.to raise_error(StandardError)
+  end
+end
 ```
 
 It's got simple one-level indentation, simple colour coding for test passes and failures, and simple failure messages with expected and actual values and the failing spec file path and line number.
@@ -112,6 +152,17 @@ M-spec comes with rubocop by default, using this [set of rules](https://github.c
 You can add either of two options
 - `--no-rubocop` which will ignore running rubocop
 - `--only-rubocop` which will ignore running your tests
+
+Example output:
+```
+---Readability Tests---
+
+Inspecting 22 files
+....C.C......C.....C..
+
+Offenses:
+[rubocop's itemised offenses]
+```
 
 See [rubocop documentation](https://docs.rubocop.org/rubocop/index.html) for more info - you might be interested in reading about rubocop's autocorrect command.
 

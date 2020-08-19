@@ -43,7 +43,6 @@ describe 'Testing output using expect block syntax' do
 end
 
 describe 'Testing Raising errors' do
-
   it 'captures error type' do
     expect { raise StandardError }.to raise_error(StandardError)
   end

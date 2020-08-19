@@ -13,8 +13,14 @@ describe 'test doubles' do
   it 'can be stubbed' do
     mock = test_double
     allow(mock).to receive(:speak) { 'Hello!' }
+    expect(mock.speak).to eq 'Hell!'
+  end
+
+  it 'shows when not accurately stubbed' do
+    mock = test_double
     expect(mock.speak).to eq 'Hello!'
   end
+
   it 'can have optional names' do
     mock = test_double('a name')
     allow(mock).to receive(:speak) { 'Hello!' }

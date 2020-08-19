@@ -42,7 +42,7 @@ Test suite produces a summary with itemised failures.
 
 3 examples found
 1 failures
-     1. /Users/edwardwithers/projects/m-spec/spec/mocks/feature_specs.rb:16:in `block (2 levels) in <top (required)>'
+     1. /path/to/directory/spec/animal_spec.rb:16:in `block (2 levels) in <top (required)>'
 
 ```
 
